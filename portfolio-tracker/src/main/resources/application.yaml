@@ -8,4 +8,6 @@ spring:
       database-platform: org.hibernate.dialect.PostgreSQLDialect
       hibernate:
         ddl-auto: update
+        format_sql: true
+      show-sql: true
 

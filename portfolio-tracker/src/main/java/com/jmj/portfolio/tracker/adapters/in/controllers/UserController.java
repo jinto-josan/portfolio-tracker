@@ -25,13 +25,13 @@ public class UserController {
   @PostMapping("/register")
   public ResponseEntity<Object> registerUser(@RequestParam("username") String username,
                                              @RequestParam("email") String email) {
-    userService.registerUser(new User(username,email));
+    userService.registerUser(new User(username,email,true));
     return ok().build();
   }
   @PostMapping("/deactivate")
   public ResponseEntity<Object> deactivateAccount(@RequestParam("username") String username,
                                                   @RequestParam("email") String email) {
-    userService.deactivateAccount(new User(username,email));
+    userService.deactivateAccount(new User(username,email,false));
     return ok().build();
   }
 }

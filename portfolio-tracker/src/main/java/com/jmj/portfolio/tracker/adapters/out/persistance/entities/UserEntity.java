@@ -2,6 +2,7 @@ package com.jmj.portfolio.tracker.adapters.out.persistance.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -19,6 +20,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
 public class UserEntity extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
