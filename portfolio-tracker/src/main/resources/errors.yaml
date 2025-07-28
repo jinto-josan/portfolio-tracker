@@ -1,0 +1,15 @@
+enums:
+  - name: BusinessErrorCode
+    outputPath: com/jmj/generated/portfolio/tracker/application/exception
+    errors:
+      - code: USR_001
+        name: USER_ALREADY_EXISTS
+        message: User with name and email exists
+      - code: USR_002
+        name: USER_NOT_FOUND
+        message: User with name and email not found
+  - name: SystemErrorCode
+    outputPath: com/jmj/generated/portfolio/tracker/adapters/out/exception
+    errors:
+      - code: SYS_001
+        name: DATABASE_ERROR
