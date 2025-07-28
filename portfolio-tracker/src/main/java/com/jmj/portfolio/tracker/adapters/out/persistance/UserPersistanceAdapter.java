@@ -5,21 +5,35 @@ import com.jmj.portfolio.tracker.adapters.out.persistance.mappers.UserEntityMapp
 import com.jmj.portfolio.tracker.adapters.out.persistance.repository.UserRepository;
 import com.jmj.portfolio.tracker.application.domain.models.User;
 import com.jmj.portfolio.tracker.application.ports.out.UserPort;
+import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
+@AllArgsConstructor
 public class UserPersistanceAdapter implements UserPort {
 
-  private UserRepository userRepository;
-  private UserEntityMapper userEntityMapper;
+  private final UserRepository userRepository;
+  private final UserEntityMapper userEntityMapper;
 
   @Override
   public void saveUser(User user) {
     userRepository.save(userEntityMapper.fromDomain(user));
   }
   public Optional<User> findUser(User user){
-    return  Optional.of(user);
-//    return userRepository.findOne((UserEntity)userEntityMapper.fromDomain(user))
-//        .map(ue->userEntityMapper.toDomain(ue));
+    return userRepository.findOne(
+            Example.of(userEntityMapper.fromDomain(user)))
+        .map(userEntityMapper::toDomain);
+  }
+  public void updateUser(User user) {
+    userRepository.findOne(
+        Example.of(new UserEntity(user.getName(), user.getEmail())))
+        .map(userEntity -> {
+          userEntity.setActive(user.isActive());
+          return userEntity;
+        })
+        .ifPresent(userRepository::save);
   }
 }

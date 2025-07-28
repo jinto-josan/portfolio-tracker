@@ -12,6 +12,9 @@ enums:
       - code: USR_002
         name: USER_NOT_FOUND
         message: User with name and email not found
+      - code: USR_003
+        name: INVALID_USER
+        message: User should have a valid name and email
   - name: SystemErrorCode
     outputPath: com/jmj/portfolio/tracker/adapters/out/exception
     errors:

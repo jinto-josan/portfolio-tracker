@@ -22,7 +22,7 @@ public class PortfolioEntity extends AuditableEntity {
   private String name;
   @ManyToOne
   @JoinColumn(name="user_id")
-  private User user;
+  private UserEntity user;
   @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<HoldingEntity> holdings=new ArrayList<>();
 }
