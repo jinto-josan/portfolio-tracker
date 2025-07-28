@@ -1,12 +1,16 @@
 package com.jmj.portfolio.tracker.application.domain.models;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.UUID;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User {
+  @EqualsAndHashCode.Include
   private String name;
-  private UUID userId;
+  @EqualsAndHashCode.Include
   private String email;
 }
