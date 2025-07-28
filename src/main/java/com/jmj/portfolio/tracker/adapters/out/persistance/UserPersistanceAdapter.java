@@ -12,16 +12,20 @@ public class UserPersistanceAdapter implements UserPort {
 
   @Override
   public void registerUser(User user) {
-    userRepository.save(userEntityMapper.fromDomain(user));
+    saveUser(user);
   }
 
   @Override
   public void updateUserDetails(User user) {
-    userRepository.save(userEntityMapper.fromDomain(user));
+    saveUser(user);
   }
 
   @Override
   public void deactivateAccount(User user) {
+    saveUser(user);
+  }
+
+  private void saveUser(User user){
     userRepository.save(userEntityMapper.fromDomain(user));
   }
 }
