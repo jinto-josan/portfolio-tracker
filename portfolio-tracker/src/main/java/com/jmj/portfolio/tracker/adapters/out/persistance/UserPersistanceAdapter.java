@@ -37,11 +37,6 @@ public class UserPersistanceAdapter implements UserPort {
   }
 
   private Optional<UserEntity> findUserEntity(User user) {
-    return userRepository.findOne(
-        Example.of(new UserEntity(user.getName(), user.getEmail()),
-            ExampleMatcher.matching()
-                .withIgnorePaths("id", "isActive", "createdAt", "updatedAt")
-        )
-    );
+    return userRepository.findByNameAndEmail(user.getName(), user.getEmail());
   }
 }

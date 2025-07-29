@@ -26,11 +26,11 @@ public class User {
     this.name = name;
     this.email = email;
     this.isActive = isActive;
-    validateUser(this);
+    validateUser();
   }
 
-  private void validateUser(User user) {
-    if(user == null || user.getEmail().isBlank() || user.getName().isBlank()) {
+  public void validateUser() {
+    if(this.getEmail().isBlank() || this.getName().isBlank()) {
       throw new BusinessException(BusinessErrorCode.INVALID_USER);
     }
   }

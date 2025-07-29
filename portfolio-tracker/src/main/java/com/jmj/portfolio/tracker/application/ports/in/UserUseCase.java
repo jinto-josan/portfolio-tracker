@@ -6,4 +6,8 @@ public interface UserUseCase {
   public void registerUser(User user);
   public void updateUserDetails(User user);
   public void deactivateAccount(User user);
+
+  User getUser(User user);
+
+  boolean isUserActive(User user);
 }

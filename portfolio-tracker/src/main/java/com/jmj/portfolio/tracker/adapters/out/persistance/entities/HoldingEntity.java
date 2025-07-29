@@ -3,6 +3,11 @@ package com.jmj.portfolio.tracker.adapters.out.persistance.entities;
 import com.jmj.portfolio.tracker.application.domain.models.Asset;
 import com.jmj.portfolio.tracker.application.domain.models.Portfolio;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.time.Instant;
 
@@ -12,6 +17,10 @@ import java.time.Instant;
     name = "holdings",
     schema = "public"
 )
+@AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 public class HoldingEntity extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

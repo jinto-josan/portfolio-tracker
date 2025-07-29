@@ -6,6 +6,6 @@ import com.jmj.portfolio.tracker.application.domain.models.Portfolio;
 import com.jmj.portfolio.tracker.application.domain.models.User;
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring", uses = {HoldingEntityMapper.class})
 public interface PortfolioEntityMapper extends GenericEntityMapper<Portfolio,PortfolioEntity> {
 }

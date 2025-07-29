@@ -15,6 +15,58 @@ enums:
       - code: USR_003
         name: INVALID_USER
         message: User should have a valid name and email
+      - code: USR_004
+        name: INACTIVE_USER
+        message: User is not active
+      - code: PORT_001
+        name: PORTFOLIO_ALREADY_EXISTS
+        message: Portfolio with name already exists
+      - code: PORT_002
+        name: PORTFOLIO_NOT_FOUND
+        message: Portfolio with name not found
+      - code: PORT_003
+        name: INVALID_PORTFOLIO
+        message: Portfolio should have a valid name and has to be associated with a user
+      - code: HOLD_001
+        name: INVALID_QUANTITY
+        message: Quantity should be greater than zero
+      - code: HOLD_002
+        name: INVALID_TXN_DATE
+        message: Transaction date should be in the past
+      - code: HOLD_003
+        name: INVALID_ASSET
+        message: Asset cannot be null or empty
+      - code: HOLD_004
+        name: NULL_TXN_DATE
+        message: Transaction date cannot be null
+      - code: HOLD_005
+        name: NULL_PORTFOLIO
+        message: Portfolio cannot be null or empty
+      - code: ASSET_001
+        name: NULL_ASSET_NAME
+        message: Asset name should not be null or empty
+      - code: ASSET_002
+        name: NULL_YIELD_FETCH_DATE
+        message: Yield fetched date should not be null or empty
+      - code: STOCK_001
+        name: NULL_STOCK_EXCHANGE
+        message: Stock exchange should not be null or empty
+      - code: STOCK_002
+        name: INVALID_PRICE
+        message: Price should be greater than zero
+      - code: FIXED_001
+        name: NULL_FIXED_INCOME_TYPE
+        message: Fixed income type should not be null or empty
+      - code: FIXED_002
+        name: INVALID_FIXED_INCOME_RATE
+        message: Fixed income rate should be greater than zero
+      - code: FIXED_003
+        name: INVALID_FIXED_INCOME_PERIOD
+        message: Fixed income period should be greater than zero
+      - code: FIXED_004
+        name: INVALID_FIXED_INCOME_FREQUENCY
+        message: Fixed income frequency should be greater than zero
+
   - name: SystemErrorCode
     outputPath: com/jmj/portfolio/tracker/adapters/out/exception
     errors:

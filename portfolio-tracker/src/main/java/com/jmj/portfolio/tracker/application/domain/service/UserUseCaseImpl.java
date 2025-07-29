@@ -1,6 +1,5 @@
 package com.jmj.portfolio.tracker.application.domain.service;
 
-import com.jmj.portfolio.tracker.adapters.out.persistance.UserPersistanceAdapter;
 import com.jmj.portfolio.tracker.application.domain.exception.BusinessException;
 import com.jmj.portfolio.tracker.application.domain.models.User;
 import com.jmj.portfolio.tracker.application.exception.BusinessErrorCode;
@@ -16,26 +15,33 @@ public class UserUseCaseImpl implements UserUseCase {
 
   @Override
   public void registerUser(User user) {
-    if (userPort.findUser(user).isPresent()) {
-      throw new BusinessException(BusinessErrorCode.USER_ALREADY_EXISTS);
-    }
+    getUser(user);
     userPort.saveUser(user);
   }
 
   @Override
   public void updateUserDetails(User user) {
-    userPort.findUser(user)
-        .orElseThrow(() -> new BusinessException(BusinessErrorCode.USER_NOT_FOUND));
+    getUser(user);
     userPort.updateUser(user);
   }
 
   @Override
   public void deactivateAccount(User user) {
-    userPort.findUser(user)
-        .orElseThrow(() -> new BusinessException(BusinessErrorCode.USER_NOT_FOUND));
+    if(!isUserActive(user)) {
+      throw new BusinessException(BusinessErrorCode.INACTIVE_USER);
+    }
     user.setActive(false); // Assuming User has an 'active' field
     userPort.updateUser(user);
+  }
 
+  @Override
+  public User getUser(User user) {
+    return userPort.findUser(user)
+        .orElseThrow(() -> new BusinessException(BusinessErrorCode.USER_NOT_FOUND));
+  }
+  @Override
+  public boolean isUserActive(User user) {
+    return getUser(user).isActive();
   }
 
 }
