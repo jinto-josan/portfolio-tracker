@@ -27,6 +27,12 @@ enums:
       - code: PORT_003
         name: INVALID_PORTFOLIO
         message: Portfolio should have a valid name and has to be associated with a user
+      - code: PORT_004
+        name: NULL_HOLDING
+        message: Holding cannot be null or empty
+      - code: PORT_005
+        name: INSUFFICIENT_UNITS
+        message: Insufficient units in the portfolio for the given transaction
       - code: HOLD_001
         name: INVALID_QUANTITY
         message: Quantity should be greater than zero

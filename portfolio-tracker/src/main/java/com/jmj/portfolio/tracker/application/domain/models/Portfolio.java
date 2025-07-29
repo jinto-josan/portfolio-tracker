@@ -13,6 +13,7 @@ import javax.annotation.processing.Generated;
 import java.time.Instant;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -46,6 +47,14 @@ public class Portfolio {
             partialResult+ holding.getCurrentValue(),
         Double::sum);
   }
+
+  public void addHolding(Holding holding) {
+    if (holding == null) {
+      throw new BusinessException(BusinessErrorCode.NULL_HOLDING);
+    }
+    holdings.add(holding);
+  }
+
 
   public void validatePortfolio() {
     if(this.user == null) {

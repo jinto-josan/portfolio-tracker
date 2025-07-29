@@ -11,7 +11,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Data
-public class Holding {
+public class Holding implements Comparable<Holding> {
   private Asset asset;
   private Portfolio portfolio;
   //This is the field where holding was sold or bought and is editable
@@ -42,5 +42,10 @@ public class Holding {
     if (this.units <= 0) {
       throw new BusinessException(BusinessErrorCode.INVALID_QUANTITY);
     }
+  }
+
+  @Override
+  public int compareTo(Holding o) {
+    return this.txnDoneAt.compareTo(o.txnDoneAt);
   }
 }

@@ -19,6 +19,9 @@ public interface PortfolioPort {
 
   void deletePortfolio(Portfolio portfolio);
 
-  void addHolding(Portfolio portfolio, Holding holding, boolean BUY_SELL_FLAG);
-  void updateHolding(Portfolio portfolio, Holding holding);
+  void addHolding(List<Holding> holdingToBeAdded);
+
+  void deleteHolding(List<Holding> holdingToBeDeleted);
+
+  void updateHolding(Holding holdingToBeUpdated);
 }
